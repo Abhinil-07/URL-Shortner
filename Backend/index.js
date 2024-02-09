@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 4000;
+const cors = require("cors");
 const urlRoute = require("./routes/url");
 const connectDB = require("./db");
 const userRouter = require("./routes/user.route");
@@ -15,6 +16,7 @@ connectDB(
     console.log(error);
   });
 
+app.use(cors({ origin: "*", credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());

@@ -11,6 +11,6 @@ router.route("/register").post(registerUser);
 
 router.route("/login").post(loginUser);
 
-router.route("/links").get(isAuthenticated, getURL);
+router.route("/details").get(isAuthenticated, getURL);
 
 module.exports = router;

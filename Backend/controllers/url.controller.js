@@ -46,7 +46,7 @@ async function generateNewShortURL(req, res) {
 
 async function getRedirectURL(req, res) {
   const shortID = req.params.shortId;
-  console.log(shortID);
+
   const entry = await URL.findOneAndUpdate(
     {
       shortId: shortID,
@@ -59,6 +59,7 @@ async function getRedirectURL(req, res) {
       },
     }
   );
+
   res.redirect(entry.redirectURL);
 }
 
