@@ -78,8 +78,11 @@ const getURL = async (req, res) => {
 
   try {
     const user = await User.findById(userId).populate("URL");
+    // console.log(user.URL.reverse());
 
-    return res.status(200).json({ success: true, links: user.URL, user: user });
+    return res
+      .status(200)
+      .json({ success: true, links: user.URL.reverse(), user: user });
   } catch (error) {
     return res.status(400).json({
       success: false,

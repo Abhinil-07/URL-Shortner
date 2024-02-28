@@ -5,6 +5,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 const Dashboard = () => {
   const [input, setInput] = useState("");
+  // const { isAuthenticated } = useSelector((state) => state.user);
   const shortenHandler = async () => {
     const response = await axios.post(
       "http://localhost:4000/url/new",
@@ -26,13 +27,22 @@ const Dashboard = () => {
     fetchData();
   };
   const [links, setLinks] = useState([]);
+
+  const deleteLink = (shortId) => {
+    console.log("Delete ho raha hain");
+    setLinks(links.filter((link) => link.shortId !== shortId));
+    console.log("after delete");
+    console.log(links);
+  };
+
   const fetchData = async () => {
     try {
       const { data } = await axios.get("http://localhost:4000/users/details", {
         withCredentials: true,
       });
-      console.log(data.links);
+
       setLinks(data.links);
+      // console.log(links);
     } catch (error) {
       console.error(error);
     }
@@ -78,6 +88,7 @@ const Dashboard = () => {
               number={index}
               id={link._id}
               fetchData={fetchData}
+              onDelete={deleteLink}
             />
           ))}
         </div>

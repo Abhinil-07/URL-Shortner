@@ -29,7 +29,7 @@ export const loginUser = async (email, password, dispatch) => {
         },
       }
     );
-    console.log(data.token);
+
     dispatch(loginSuccess(data.user));
   } catch (error) {
     console.log(error);

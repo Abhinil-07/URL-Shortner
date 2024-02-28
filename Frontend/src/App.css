@@ -1,0 +1,10 @@
+/* Hide the scrollbar track, but retain the scrollbar handle */
+body::-webkit-scrollbar {
+    width: 0;
+    /* Remove scrollbar track */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    /* Make scrollbar handle invisible */
+}
